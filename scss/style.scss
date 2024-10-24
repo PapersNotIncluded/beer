@@ -1,0 +1,199 @@
+@import "nullstyle";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+.oswald-text {
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    width: 100vw;
+    height: 100%;
+}
+
+body {
+    font-family: "Oswald", sans-serif;
+    width: 100vw;
+    height: fit-content;
+    position: relative;
+    overflow-x: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        right: 0;
+        background: url(../img/beer.avif) repeat;
+        filter: grayscale(100%);
+        opacity: 0.1;
+        z-index: 1;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 60px 40px;
+    position: relative;
+    z-index: 2;
+    max-width: 1440px;
+}
+
+.beer {
+    &__title {
+        font-size: 48px;
+    }
+
+    &__subtitle {
+        padding: 20px 0 0;
+        font-size: 30px;
+    }
+
+    &__photo-block {
+        display: flex;
+        gap: 32px;
+        padding: 40px 0;
+    }
+
+    &__text {
+        font-size: 24px;
+        font-family: "Raleway", sans-serif;
+
+        &__start {
+            text-align: center;
+            padding: 10px 0 0;
+        }
+
+        &-animation {
+            font-size: 20px;
+            width: 100%;
+        }
+
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    &__photo {
+        filter: grayscale(80%);
+        max-width: 400px;
+        border-radius: 20px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    &__ai {
+        display: grid;
+        grid-template: repeat(2, auto) / 1fr 400px;
+        padding: 40px 0;
+        row-gap: 20px;
+        column-gap: 40px;
+
+        &__wrapper {
+            width: 1000px;
+            display: block;
+            position: relative;
+            &::before {
+                content: "";
+                position: absolute;
+                left: -20px;
+                transform: translate(-100%, 0);
+                width: 50px;
+                height: 50px;
+                top: 0;
+                background-image: url(../img/copilot.png);
+            }
+        }
+
+        &__question {
+            font-family: "Raleway", sans-serif;
+            font-size: 20px;
+        }
+    }
+
+    &__faq {
+        display: flex;
+        flex-direction: column;
+        max-width: 1000px;
+        width: 100%;
+
+        &__title {
+            padding: 0 0 40px;
+        }
+
+        &__item {
+            overflow: hidden;
+
+            &__question {
+                padding: 0;
+            }
+
+            &__container {
+                width: 100%;
+                display: flex;
+                padding: 20px;
+                flex-direction: column;
+                border-bottom: 1px solid black;
+                justify-content: center;
+                position: relative;
+                cursor: pointer;
+                &::before {
+                    content: "";
+                    background-image: url(../img/arrow.svg);
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    top: 30px;
+                    width: 30px;
+                    transform: rotate(-180deg);
+                    transition: 400ms ease transform;
+                    height: 30px;
+                    right: 0;
+                }
+
+                &_opened {
+                    &::before {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+            &__wrapper {
+                display: grid;
+                grid-template-rows: 0fr;
+                transition: 400ms all ease;
+                padding: 0 0 0;
+
+                &_opened {
+                    padding: 20px 0 0;
+                    grid-template-rows: 1fr;
+                }
+            }
+        }
+    }
+}
+
+@keyframes cursor {
+    0% {
+        border-color: white;
+    }
+
+    50% {
+        border-color: transparent;
+    }
+
+    100% {
+        border-color: white;
+    }
+}
+
+@keyframes printed_text {
+    from {
+        width: 0;
+    }
+}
